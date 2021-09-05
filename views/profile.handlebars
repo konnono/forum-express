@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row" style="border: 1px solid grey">
+    <div class="image d-flex align-items-center justify-content-center col-4">
+      <img src="{{user_p.image}}" style="border-radius: 50%; max-width:20vw">
+    </div>
+    <div class="info col-8">
+      <h3 class="mt-3">{{user_p.name}}</h3>
+      <p class="mt-2">{{user_p.email}}</p>
+      {{#ifCond user_p.id user.id}}
+      <a href="/users/{{user_p.id}}/edit" class="btn btn-primary mb-3">Edit</a>
+      {{/ifCond}}
+    </div>
+  </div>
+</div>
