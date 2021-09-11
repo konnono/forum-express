@@ -11,6 +11,16 @@ const adminService = {
     }).then(restaurants => {
       callback({ restaurants })
     })
+  },
+
+  getRestaurant: (req, res, callback) => {
+    console.log('req.params.id', req.params.id)
+    return Restaurant.findByPk(req.params.id, { include: [Category] })
+      .then(restaurant => {
+        callback({
+          restaurant
+        })
+      })
   }
 }
 
