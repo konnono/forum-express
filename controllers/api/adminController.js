@@ -5,7 +5,7 @@ const adminService = require('../../services/adminService.js')
 
 const adminController = {
   getRestaurants: (req, res) => {
-    adminService.getRestaurants(req, res, (data) => {
+    adminService.getRestaurants(req, res, data => {
       return res.json(data)
     })
   },
@@ -15,6 +15,12 @@ const adminController = {
       return res.json(data.restaurant.toJSON())
     })
   },
+
+  deleteRestaurant: (req, res) => {
+    adminService.deleteRestaurant(req, res, data => {
+      return res.json(data)
+    })
+  }
 }
 
 module.exports = adminController
