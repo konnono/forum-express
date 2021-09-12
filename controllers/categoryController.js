@@ -27,28 +27,14 @@ const categoryController = {
       }
       res.redirect('/admin/categories')
     })
-    // if (!req.body.name) {
-    //   req.flash('error_messages', 'name didn\'t exist')
-    //   return res.redirect('back')
-    // } else {
-    //   return Category.findByPk(req.params.id)
-    //     .then(category => {
-    //       category.update(req.body)
-    //         .then(category => {
-    //           res.redirect('/admin/categories')
-    //         })
-    //     })
-    // }
   },
 
   deleteCategory: (req, res) => {
-    return Category.findByPk(req.params.id)
-      .then((category) => {
-        category.destroy()
-          .then((category) => {
-            res.redirect('/admin/categories')
-          })
-      })
+    categoryService.deleteCategory(req, res, (data) => {
+      if (data['status'] === 'success') {
+        return res.redirect('/admin/categories')
+      }
+    })
   }
 }
 module.exports = categoryController
